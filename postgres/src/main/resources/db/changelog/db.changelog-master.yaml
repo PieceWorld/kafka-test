@@ -1,0 +1,91 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
+  - changeSet:
+      id: 1
+      author: admin
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: initials
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: admin
+      comment: "Create admin user"
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Филиппов К. С."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Сидорова А. Д."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Воронин М. Д."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Русаков Т. А."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Горячева Д. Д."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Яковлев П. Я."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Гурова В. И."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Петухов В. Д."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Полякова А. И."
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: initials
+                  value: "Королев Л. Р."
+      rollback:
+        - delete:
+            tableName: users
+            where: id in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
